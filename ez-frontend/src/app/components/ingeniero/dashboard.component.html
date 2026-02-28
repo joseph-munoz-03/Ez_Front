@@ -1,0 +1,65 @@
+<div class="dashboard-container">
+  <h1>Dashboard Ingeniero</h1>
+
+  <!-- Estadísticas Rápidas -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h3>Proyectos Activos</h3>
+      <p class="stat-number">{{ estadisticas.proyectosActivos }}</p>
+    </div>
+    <div class="stat-card">
+      <h3>Tareas Completadas</h3>
+      <p class="stat-number">{{ estadisticas.tareasCompletadas }}</p>
+    </div>
+    <div class="stat-card">
+      <h3>En Progreso</h3>
+      <p class="stat-number">{{ estadisticas.taskasEnProgreso }}</p>
+    </div>
+    <div class="stat-card">
+      <h3>Horas Registradas</h3>
+      <p class="stat-number">{{ estadisticas.horas }}</p>
+    </div>
+  </div>
+
+  <!-- Proyectos Asignados -->
+  <div class="projects-section">
+    <h2>Proyectos Asignados</h2>
+    <div class="projects-grid">
+      <div *ngFor="let proyecto of proyectos" class="project-card">
+        <h3>{{ proyecto.nombre }}</h3>
+        <div class="project-meta">
+          <span class="status" [ngClass]="proyecto.estado">{{ proyecto.estado | titlecase }}</span>
+          <span class="date">{{ proyecto.fechaEntrega }}</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="proyecto.avance"></div>
+        </div>
+        <p class="progress-text">{{ proyecto.avance }}% completado</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tareas Pendientes -->
+  <div class="tasks-section">
+    <h2>Tareas Pendientes</h2>
+    <table class="tasks-table">
+      <thead>
+        <tr>
+          <th>Tarea</th>
+          <th>Proyecto</th>
+          <th>Prioridad</th>
+          <th>Vencimiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tarea of tareasPendientes">
+          <td>{{ tarea.titulo }}</td>
+          <td>{{ tarea.proyecto }}</td>
+          <td><span class="priority" [ngClass]="'priority-' + tarea.prioridad.toLowerCase()">{{ tarea.prioridad | titlecase }}</span></td>
+          <td>{{ tarea.vencimiento }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

@@ -1,0 +1,50 @@
+<div class="proyectos-container">
+  <div class="header-section">
+    <h1>Proyectos Asignados</h1>
+    <p class="subtitle">Visualiza los proyectos en los que participas</p>
+  </div>
+
+  <div class="proyectos-grid">
+    <div class="proyecto-card" *ngFor="let proyecto of proyectos">
+      <div class="proyecto-header">
+        <h3>{{ proyecto.nombre }}</h3>
+        <span class="estado" [class]="'estado-' + proyecto.estado.toLowerCase().replace(' ', '-')">
+          {{ proyecto.estado }}
+        </span>
+      </div>
+
+      <p class="descripcion">{{ proyecto.descripcion }}</p>
+
+      <div class="progreso-section">
+        <div class="progreso-label">
+          <span>Progreso</span>
+          <span class="porcentaje">{{ proyecto.progreso }}%</span>
+        </div>
+        <div class="progreso-bar">
+          <div class="progreso-fill" [style.width.%]="proyecto.progreso"></div>
+        </div>
+      </div>
+
+      <div class="proyecto-info">
+        <div class="info-item">
+          <span class="label">Inicio:</span>
+          <span class="value">{{ proyecto.fechaInicio }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Fin:</span>
+          <span class="value">{{ proyecto.fechaFin }}</span>
+        </div>
+      </div>
+
+      <div class="equipo-section">
+        <p class="equipo-label">Equipo</p>
+        <div class="equipo-members">
+          <span class="member" *ngFor="let miembro of proyecto.equipo">{{ miembro }}</span>
+        </div>
+      </div>
+
+      <button class="btn-detalles">Ver Detalles</button>
+    </div>
+  </div>
+</div>
+

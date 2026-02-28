@@ -1,0 +1,174 @@
+.proyectos-container {
+  padding: 2rem;
+  background: #f5f7fa;
+  min-height: 100vh;
+
+  .header-section {
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2rem;
+      color: #1a202c;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .subtitle {
+      color: #718096;
+      font-size: 1rem;
+    }
+  }
+
+  .proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+
+    .proyecto-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .proyecto-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        h3 {
+          margin: 0;
+          color: #1a202c;
+          font-size: 1.25rem;
+        }
+
+        .estado {
+          padding: 0.25rem 0.75rem;
+          border-radius: 20px;
+          font-size: 0.75rem;
+          font-weight: bold;
+          text-transform: uppercase;
+
+          &.estado-en-progreso {
+            background: #fef3c7;
+            color: #92400e;
+          }
+
+          &.estado-completado {
+            background: #d1fae5;
+            color: #065f46;
+          }
+
+          &.estado-pendiente {
+            background: #fee2e2;
+            color: #7f1d1d;
+          }
+        }
+      }
+
+      .descripcion {
+        color: #4a5568;
+        font-size: 0.95rem;
+        margin: 1rem 0;
+      }
+
+      .progreso-section {
+        margin: 1.5rem 0;
+
+        .progreso-label {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 0.5rem;
+          font-size: 0.9rem;
+          color: #4a5568;
+
+          .porcentaje {
+            font-weight: bold;
+            color: #2d3748;
+          }
+        }
+
+        .progreso-bar {
+          background: #e2e8f0;
+          border-radius: 10px;
+          height: 8px;
+          overflow: hidden;
+
+          .progreso-fill {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            transition: width 0.3s;
+          }
+        }
+      }
+
+      .proyecto-info {
+        margin: 1.5rem 0;
+
+        .info-item {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 0.5rem;
+          font-size: 0.9rem;
+
+          .label {
+            color: #718096;
+          }
+
+          .value {
+            color: #2d3748;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .equipo-section {
+        margin: 1.5rem 0;
+
+        .equipo-label {
+          margin: 0 0 0.5rem 0;
+          color: #4a5568;
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+
+        .equipo-members {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+
+          .member {
+            background: #edf2f7;
+            color: #2d3748;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+          }
+        }
+      }
+
+      .btn-detalles {
+        width: 100%;
+        padding: 0.75rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: opacity 0.3s;
+        margin-top: 1rem;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}
+

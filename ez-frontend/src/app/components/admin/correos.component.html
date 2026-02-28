@@ -1,0 +1,58 @@
+<div class="correos-container">
+  <div class="correos-header">
+    <h1>Gestión de Correos</h1>
+    <button class="btn-primary" (click)="enviarCorreo()">+ Enviar Correo</button>
+  </div>
+
+  <!-- Filtros -->
+  <div class="filters-section">
+    <div class="filter-group">
+      <label>Buscar</label>
+      <input type="text" placeholder="Destinatario o asunto..." [(ngModel)]="searchTerm" class="search-input" />
+    </div>
+
+    <div class="filter-group">
+      <label>Estado</label>
+      <select [(ngModel)]="filtroEstado" class="select-input">
+        <option value="">Todos</option>
+        <option value="enviado">Enviado</option>
+        <option value="pendiente">Pendiente</option>
+        <option value="fallido">Fallido</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Tabla de Correos -->
+  <div class="table-section">
+    <table class="correos-table">
+      <thead>
+        <tr>
+          <th>Destinatario</th>
+          <th>Asunto</th>
+          <th>Tipo</th>
+          <th>Fecha Envío</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let correo of correosFiltrados" [ngClass]="'estado-' + correo.estado">
+          <td>{{ correo.destinatario }}</td>
+          <td>{{ correo.asunto }}</td>
+          <td><span class="badge tipo">{{ correo.tipo }}</span></td>
+          <td>{{ correo.fechaEnvio || '—' }}</td>
+          <td><span class="status-badge" [ngClass]="correo.estado">{{ correo.estado | titlecase }}</span></td>
+          <td class="actions">
+            <button *ngIf="correo.estado !== 'enviado'" class="btn-send" (click)="reenviarCorreo(correo.id)" title="Enviar">📧</button>
+            <button class="btn-delete" (click)="eliminarCorreo(correo.id)" title="Eliminar">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="correosFiltrados.length === 0" class="no-results">
+      <p>No se encontraron correos</p>
+    </div>
+  </div>
+</div>
+

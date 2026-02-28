@@ -1,0 +1,220 @@
+.usuario-dashboard {
+  padding: 2rem;
+  background: #f5f7fa;
+  min-height: 100vh;
+
+  .header-section {
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2rem;
+      color: #1a202c;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .subtitle {
+      color: #718096;
+      font-size: 1rem;
+    }
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    .info-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        h2 {
+          margin: 0;
+          color: #1a202c;
+          font-size: 1.25rem;
+        }
+
+        .btn-editar {
+          padding: 0.5rem 1rem;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-weight: 600;
+          transition: opacity 0.3s;
+
+          &:hover {
+            opacity: 0.9;
+          }
+        }
+      }
+
+      &.perfil-card {
+        .perfil-info {
+          .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e2e8f0;
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            .label {
+              color: #718096;
+              font-weight: 600;
+            }
+
+            .value {
+              color: #2d3748;
+              font-weight: 500;
+
+              &.estado-activo {
+                color: #065f46;
+                background: #d1fae5;
+                padding: 0.25rem 0.75rem;
+                border-radius: 20px;
+                font-size: 0.85rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .stats-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+
+      .stat-item {
+        text-align: center;
+        padding: 1rem;
+        background: #f7fafc;
+        border-radius: 8px;
+
+        .stat-number {
+          font-size: 2rem;
+          font-weight: bold;
+          color: #667eea;
+          margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+          color: #4a5568;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+
+  .recent-section {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+
+      h2 {
+        margin: 0;
+        color: #1a202c;
+        font-size: 1.25rem;
+      }
+
+      .btn-ver-todas {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        transition: opacity 0.3s;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .solicitudes-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .solicitud-item {
+        padding: 1rem;
+        border-left: 4px solid #667eea;
+        background: #f7fafc;
+        border-radius: 4px;
+
+        .solicitud-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.75rem;
+
+          h4 {
+            margin: 0;
+            color: #1a202c;
+            font-size: 1rem;
+          }
+
+          .estado-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+
+            &.estado-abierta {
+              background: #fee2e2;
+              color: #7f1d1d;
+            }
+
+            &.estado-en-revisión {
+              background: #fef3c7;
+              color: #92400e;
+            }
+
+            &.estado-completada {
+              background: #d1fae5;
+              color: #065f46;
+            }
+          }
+        }
+
+        .solicitud-details {
+          display: flex;
+          gap: 1rem;
+          font-size: 0.85rem;
+
+          .tipo {
+            color: #667eea;
+            font-weight: 600;
+          }
+
+          .fecha {
+            color: #718096;
+          }
+        }
+      }
+    }
+  }
+}
+

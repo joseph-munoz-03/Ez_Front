@@ -1,0 +1,200 @@
+.perfil-container {
+  padding: 2rem;
+  background: #f5f7fa;
+  min-height: 100vh;
+
+  .header-section {
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2rem;
+      color: #1a202c;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .subtitle {
+      color: #718096;
+      font-size: 1rem;
+    }
+  }
+
+  .perfil-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    max-width: 600px;
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e2e8f0;
+
+      h2 {
+        margin: 0;
+        color: #1a202c;
+        font-size: 1.25rem;
+      }
+
+      .card-actions {
+        .btn-editar {
+          padding: 0.5rem 1rem;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-weight: 600;
+          transition: opacity 0.3s;
+
+          &:hover {
+            opacity: 0.9;
+          }
+        }
+
+        .action-buttons {
+          display: flex;
+          gap: 0.75rem;
+
+          .btn-guardar {
+            padding: 0.5rem 1rem;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.3s;
+
+            &:hover {
+              opacity: 0.9;
+            }
+          }
+
+          .btn-cancelar {
+            padding: 0.5rem 1rem;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.3s;
+
+            &:hover {
+              opacity: 0.9;
+            }
+          }
+        }
+      }
+    }
+
+    .perfil-content {
+      .perfil-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+
+          label {
+            color: #1a202c;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+          }
+
+          input {
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+
+            &:focus {
+              outline: none;
+              border-color: #667eea;
+              box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            }
+          }
+        }
+      }
+
+      .perfil-view {
+        .info-row {
+          display: flex;
+          justify-content: space-between;
+          padding: 1rem 0;
+          border-bottom: 1px solid #e2e8f0;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          .label {
+            color: #718096;
+            font-weight: 600;
+          }
+
+          .value {
+            color: #2d3748;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  .security-content {
+    .security-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .option-info {
+        flex: 1;
+
+        h4 {
+          margin: 0 0 0.5rem 0;
+          color: #1a202c;
+          font-size: 1rem;
+        }
+
+        p {
+          margin: 0;
+          color: #718096;
+          font-size: 0.9rem;
+        }
+      }
+
+      .btn-accion {
+        padding: 0.5rem 1.25rem;
+        background: #e2e8f0;
+        color: #2d3748;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background: #cbd5e0;
+        }
+      }
+    }
+  }
+}
+

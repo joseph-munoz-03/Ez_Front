@@ -1,0 +1,63 @@
+<header class="app-header">
+  <div class="header-container">
+    <!-- Logo y Título -->
+    <div class="header-brand">
+      <h1 routerLink="/">EZ-Front</h1>
+    </div>
+
+    <!-- Navegación según Rol -->
+    <nav class="header-nav">
+      <div [ngSwitch]="userRole">
+        <!-- MENU ADMIN -->
+        <div *ngSwitchCase="'admin'" class="nav-items">
+          <a routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+          <a routerLink="/admin/usuarios" routerLinkActive="active">Usuarios</a>
+          <a routerLink="/admin/contratos" routerLinkActive="active">Contratos</a>
+          <a routerLink="/admin/correos" routerLinkActive="active">Correos</a>
+          <a routerLink="/admin/chat" routerLinkActive="active">Chat</a>
+        </div>
+
+        <!-- MENU INGENIERO -->
+        <div *ngSwitchCase="'ingeniero'" class="nav-items">
+          <a routerLink="/ingeniero/dashboard" routerLinkActive="active">Dashboard</a>
+          <a routerLink="/ingeniero/proyectos" routerLinkActive="active">Proyectos</a>
+          <a routerLink="/ingeniero/tareas" routerLinkActive="active">Tareas</a>
+          <a routerLink="/ingeniero/herramientas" routerLinkActive="active">Herramientas</a>
+        </div>
+
+        <!-- MENU USUARIO -->
+        <div *ngSwitchCase="'usuario'" class="nav-items">
+          <a routerLink="/usuario/dashboard" routerLinkActive="active">Dashboard</a>
+          <a routerLink="/usuario/solicitudes" routerLinkActive="active">Solicitudes</a>
+          <a routerLink="/usuario/perfil" routerLinkActive="active">Perfil</a>
+          <a routerLink="/usuario/soporte" routerLinkActive="active">Soporte</a>
+        </div>
+
+        <!-- MENU POR DEFECTO -->
+        <div *ngSwitchDefault class="nav-items">
+          <a routerLink="/" routerLinkActive="active">Inicio</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Usuario y Menú Desplegable -->
+    <div class="header-user">
+      <div class="user-info">
+        <span class="user-name">{{ userName }}</span>
+        <span class="user-role">{{ userRole }}</span>
+      </div>
+      <button class="menu-toggle" (click)="toggleMenu()" title="Menú">
+        ☰
+      </button>
+
+      <!-- Menú Desplegable -->
+      <div class="dropdown-menu" *ngIf="isMenuOpen">
+        <a (click)="navigateTo('/perfil')" class="dropdown-item">Mi Perfil</a>
+        <a (click)="navigateTo('/configuracion')" class="dropdown-item">Configuración</a>
+        <hr class="dropdown-divider" />
+        <a (click)="logout()" class="dropdown-item logout">Cerrar Sesión</a>
+      </div>
+    </div>
+  </div>
+</header>
+

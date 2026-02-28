@@ -1,0 +1,208 @@
+.tareas-container {
+  padding: 2rem;
+  background: #f5f7fa;
+  min-height: 100vh;
+
+  .header-section {
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2rem;
+      color: #1a202c;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .subtitle {
+      color: #718096;
+      font-size: 1rem;
+    }
+  }
+
+  .filtros-section {
+    margin-bottom: 2rem;
+
+    .filtro-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      .btn-filtro {
+        padding: 0.5rem 1.25rem;
+        border: 2px solid #e2e8f0;
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 600;
+        color: #4a5568;
+
+        &:hover {
+          border-color: #cbd5e0;
+          background: #f7fafc;
+        }
+
+        &.active {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border-color: transparent;
+        }
+      }
+    }
+  }
+
+  .tareas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .tarea-item {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-left: 4px solid #667eea;
+
+      &:hover {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transform: translateX(5px);
+      }
+
+      .tarea-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+
+        .tarea-titulo {
+          flex: 1;
+
+          h3 {
+            margin: 0 0 0.5rem 0;
+            color: #1a202c;
+            font-size: 1.1rem;
+          }
+
+          .proyecto-tag {
+            display: inline-block;
+            background: #edf2f7;
+            color: #2d3748;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+          }
+        }
+
+        .tarea-badges {
+          display: flex;
+          gap: 0.75rem;
+
+          .estado-badge {
+            padding: 0.4rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+
+            &.estado-pendiente {
+              background: #fee2e2;
+              color: #7f1d1d;
+            }
+
+            &.estado-en-progreso {
+              background: #fef3c7;
+              color: #92400e;
+            }
+
+            &.estado-completado {
+              background: #d1fae5;
+              color: #065f46;
+            }
+          }
+
+          .prioridad-badge {
+            padding: 0.4rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+
+            &.prioridad-alta {
+              background: #fecaca;
+              color: #7f1d1d;
+            }
+
+            &.prioridad-media {
+              background: #fed7aa;
+              color: #7c2d12;
+            }
+
+            &.prioridad-baja {
+              background: #bbf7d0;
+              color: #065f46;
+            }
+          }
+        }
+      }
+
+      .tarea-details {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 1rem;
+        padding: 1rem 0;
+        border-top: 1px solid #e2e8f0;
+        border-bottom: 1px solid #e2e8f0;
+
+        .detail-item {
+          display: flex;
+          gap: 0.5rem;
+
+          .label {
+            color: #718096;
+            font-weight: 600;
+          }
+
+          .value {
+            color: #2d3748;
+          }
+        }
+      }
+
+      .tarea-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+
+        .btn-action {
+          padding: 0.4rem 1rem;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 0.85rem;
+          font-weight: 600;
+          transition: opacity 0.3s;
+
+          &:hover {
+            opacity: 0.9;
+          }
+
+          &.btn-pendiente {
+            background: #fee2e2;
+            color: #7f1d1d;
+          }
+
+          &.btn-progreso {
+            background: #fef3c7;
+            color: #92400e;
+          }
+
+          &.btn-completado {
+            background: #d1fae5;
+            color: #065f46;
+          }
+        }
+      }
+    }
+  }
+}
+

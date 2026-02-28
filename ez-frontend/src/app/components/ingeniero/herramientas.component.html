@@ -1,0 +1,26 @@
+<div class="herramientas-container">
+  <div class="header-section">
+    <h1>Herramientas y Recursos</h1>
+    <p class="subtitle">Accede a todas las herramientas técnicas necesarias</p>
+  </div>
+
+  <div class="herramientas-grid">
+    <div
+      class="herramienta-card"
+      *ngFor="let herramienta of herramientas"
+      [class.deshabilitada]="!herramienta.disponible"
+    >
+      <div class="herramienta-icono">{{ herramienta.icono }}</div>
+      <h3>{{ herramienta.nombre }}</h3>
+      <p>{{ herramienta.descripcion }}</p>
+      <button
+        class="btn-acceder"
+        [disabled]="!herramienta.disponible"
+        (click)="accederHerramienta(herramienta)"
+      >
+        {{ herramienta.disponible ? 'Acceder' : 'No disponible' }}
+      </button>
+    </div>
+  </div>
+</div>
+

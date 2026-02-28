@@ -1,0 +1,63 @@
+<div class="chat-container">
+  <div class="chat-grid">
+    <!-- Lista de Conversaciones -->
+    <div class="conversaciones-panel">
+      <h2>Conversaciones</h2>
+      <div class="conversaciones-list">
+        <div *ngFor="let conv of conversaciones"
+             class="conversacion-item"
+             [ngClass]="{ 'active': conversacionSeleccionada?.id === conv.id }"
+             (click)="seleccionarConversacion(conv)">
+          <div class="conv-header">
+            <h3>{{ conv.usuario }}</h3>
+            <span class="status-dot" [ngClass]="conv.estado"></span>
+          </div>
+          <p class="ultimo-mensaje">{{ conv.ultimoMensaje }}</p>
+          <div class="conv-footer">
+            <span class="fecha">{{ conv.fecha }}</span>
+            <span *ngIf="conv.noLeidos > 0" class="badge-noLeidos">{{ conv.noLeidos }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel de Chat -->
+    <div class="chat-panel">
+      <div *ngIf="conversacionSeleccionada" class="chat-content">
+        <!-- Header del Chat -->
+        <div class="chat-header">
+          <h2>{{ conversacionSeleccionada.usuario }}</h2>
+          <span class="status" [ngClass]="conversacionSeleccionada.estado">
+            {{ conversacionSeleccionada.estado === 'en-línea' ? '🟢 En línea' : '⚫ Fuera de línea' }}
+          </span>
+        </div>
+
+        <!-- Mensajes -->
+        <div class="messages-area">
+          <div *ngFor="let msg of mensajes" class="message" [ngClass]="msg.tipo">
+            <div class="message-content">
+              <p>{{ msg.contenido }}</p>
+              <span class="message-time">{{ msg.hora }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input de Mensaje -->
+        <div class="message-input-area">
+          <input
+            type="text"
+            [(ngModel)]="nuevoMensaje"
+            (keyup.enter)="enviarMensaje()"
+            placeholder="Escribe un mensaje..."
+            class="message-input">
+          <button (click)="enviarMensaje()" class="btn-send">Enviar</button>
+        </div>
+      </div>
+
+      <div *ngIf="!conversacionSeleccionada" class="no-conversation">
+        <p>Selecciona una conversación para comenzar a chatear</p>
+      </div>
+    </div>
+  </div>
+</div>
+

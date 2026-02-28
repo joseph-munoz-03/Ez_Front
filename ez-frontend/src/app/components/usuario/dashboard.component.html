@@ -1,0 +1,82 @@
+<div class="usuario-dashboard">
+  <div class="header-section">
+    <h1>Mi Panel</h1>
+    <p class="subtitle">Bienvenido, {{ usuario.nombre }}</p>
+  </div>
+
+  <div class="dashboard-grid">
+    <!-- Tarjeta de Perfil -->
+    <div class="info-card perfil-card">
+      <div class="card-header">
+        <h2>Mi Perfil</h2>
+        <button class="btn-editar">Editar</button>
+      </div>
+      <div class="perfil-info">
+        <div class="info-row">
+          <span class="label">Nombre:</span>
+          <span class="value">{{ usuario.nombre }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Email:</span>
+          <span class="value">{{ usuario.email }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Teléfono:</span>
+          <span class="value">{{ usuario.telefono }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Empresa:</span>
+          <span class="value">{{ usuario.empresa }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Estado:</span>
+          <span class="value estado-activo">{{ usuario.estado }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta de Resumen de Solicitudes -->
+    <div class="stats-card">
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Solicitudes Totales</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Abiertas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label">En Revisión</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Completadas</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Últimas Solicitudes -->
+  <div class="recent-section">
+    <div class="section-header">
+      <h2>Últimas Solicitudes</h2>
+      <a href="/usuario/solicitudes" class="btn-ver-todas">Ver todas</a>
+    </div>
+
+    <div class="solicitudes-preview">
+      <div class="solicitud-item" *ngFor="let solicitud of solicitudes.slice(0, 3)">
+        <div class="solicitud-header">
+          <h4>{{ solicitud.asunto }}</h4>
+          <span class="estado-badge" [class]="'estado-' + solicitud.estado.toLowerCase().replace(' ', '-')">
+            {{ solicitud.estado }}
+          </span>
+        </div>
+        <div class="solicitud-details">
+          <span class="tipo">{{ solicitud.tipo }}</span>
+          <span class="fecha">{{ solicitud.fecha }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

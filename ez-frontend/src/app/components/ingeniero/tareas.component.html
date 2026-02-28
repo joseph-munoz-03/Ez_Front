@@ -1,0 +1,74 @@
+<div class="tareas-container">
+  <div class="header-section">
+    <h1>Tareas Asignadas</h1>
+    <p class="subtitle">Gestiona tus tareas y seguimiento de progreso</p>
+  </div>
+
+  <div class="filtros-section">
+    <div class="filtro-buttons">
+      <button
+        *ngFor="let estado of estados"
+        [class.active]="filtroEstado === estado"
+        (click)="filtrar(estado)"
+        class="btn-filtro"
+      >
+        {{ estado }}
+      </button>
+    </div>
+  </div>
+
+  <div class="tareas-list">
+    <div class="tarea-item" *ngFor="let tarea of tareasFiltered">
+      <div class="tarea-header">
+        <div class="tarea-titulo">
+          <h3>{{ tarea.titulo }}</h3>
+          <span class="proyecto-tag">{{ tarea.proyecto }}</span>
+        </div>
+        <div class="tarea-badges">
+          <span class="estado-badge" [class]="'estado-' + tarea.estado.toLowerCase().replace(' ', '-')">
+            {{ tarea.estado }}
+          </span>
+          <span class="prioridad-badge" [class]="'prioridad-' + tarea.prioridad.toLowerCase()">
+            {{ tarea.prioridad }}
+          </span>
+        </div>
+      </div>
+
+      <div class="tarea-details">
+        <div class="detail-item">
+          <span class="label">Asignado a:</span>
+          <span class="value">{{ tarea.asignado }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Vencimiento:</span>
+          <span class="value">{{ tarea.fechaVencimiento }}</span>
+        </div>
+      </div>
+
+      <div class="tarea-actions">
+        <button
+          class="btn-action btn-pendiente"
+          *ngIf="tarea.estado !== 'Pendiente'"
+          (click)="actualizarEstado(tarea.id, 'Pendiente')"
+        >
+          Pendiente
+        </button>
+        <button
+          class="btn-action btn-progreso"
+          *ngIf="tarea.estado !== 'En Progreso'"
+          (click)="actualizarEstado(tarea.id, 'En Progreso')"
+        >
+          En Progreso
+        </button>
+        <button
+          class="btn-action btn-completado"
+          *ngIf="tarea.estado !== 'Completado'"
+          (click)="actualizarEstado(tarea.id, 'Completado')"
+        >
+          Completado
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

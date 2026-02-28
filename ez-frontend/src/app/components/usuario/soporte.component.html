@@ -1,0 +1,105 @@
+<div class="soporte-container">
+  <div class="header-section">
+    <h1>Centro de Soporte</h1>
+    <p class="subtitle">Contáctanos o consulta nuestras preguntas frecuentes</p>
+  </div>
+
+  <div class="soporte-grid">
+    <!-- Formulario de Soporte -->
+    <div class="formulario-section">
+      <div class="card">
+        <h2>Enviar Solicitud de Soporte</h2>
+
+        <form class="soporte-form" (ngSubmit)="enviarSolicitud()">
+          <div class="form-group">
+            <label>Asunto *</label>
+            <input
+              type="text"
+              [(ngModel)]="formularioSoporte.asunto"
+              name="asunto"
+              placeholder="Describe brevemente tu consulta"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Categoría *</label>
+            <select [(ngModel)]="formularioSoporte.categoria" name="categoria">
+              <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Descripción *</label>
+            <textarea
+              [(ngModel)]="formularioSoporte.descripcion"
+              name="descripcion"
+              placeholder="Proporciona detalles de tu problema o consulta"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Adjuntar Archivo (Opcional)</label>
+            <input type="file" (change)="manejarArchivo($event)" />
+            <small *ngIf="formularioSoporte.archivo">
+              Archivo: {{ formularioSoporte.archivo.name }}
+            </small>
+          </div>
+
+          <button type="submit" class="btn-enviar">Enviar Solicitud</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Preguntas Frecuentes -->
+    <div class="faq-section">
+      <div class="card">
+        <h2>Preguntas Frecuentes</h2>
+
+        <div class="faq-list">
+          <div class="faq-item" *ngFor="let faq of preguntas_frecuentes">
+            <div class="faq-pregunta">
+              <h4>{{ faq.pregunta }}</h4>
+              <span class="icon">+</span>
+            </div>
+            <div class="faq-respuesta">
+              <p>{{ faq.respuesta }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información de Contacto -->
+      <div class="card contacto-card">
+        <h2>Información de Contacto</h2>
+
+        <div class="contacto-item">
+          <div class="icono">📧</div>
+          <div>
+            <h4>Email</h4>
+            <p>soporte@ezsolutions.com</p>
+          </div>
+        </div>
+
+        <div class="contacto-item">
+          <div class="icono">📞</div>
+          <div>
+            <h4>Teléfono</h4>
+            <p>+34 600 000 000</p>
+          </div>
+        </div>
+
+        <div class="contacto-item">
+          <div class="icono">⏰</div>
+          <div>
+            <h4>Horario</h4>
+            <p>Lunes a Viernes: 9:00 - 18:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

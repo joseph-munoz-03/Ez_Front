@@ -1,0 +1,209 @@
+.solicitudes-container {
+  padding: 2rem;
+  background: #f5f7fa;
+  min-height: 100vh;
+
+  .header-section {
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2rem;
+      color: #1a202c;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .subtitle {
+      color: #718096;
+      font-size: 1rem;
+    }
+  }
+
+  .filtros-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+
+    .btn-filtro {
+      padding: 0.5rem 1.25rem;
+      border: 2px solid #e2e8f0;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+      color: #4a5568;
+
+      &:hover {
+        border-color: #cbd5e0;
+      }
+
+      &.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-color: transparent;
+      }
+    }
+  }
+
+  .solicitudes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .solicitud-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e2e8f0;
+
+        .header-info {
+          flex: 1;
+
+          h3 {
+            margin: 0 0 0.5rem 0;
+            color: #1a202c;
+            font-size: 1.1rem;
+          }
+
+          .solicitud-meta {
+            display: flex;
+            gap: 1rem;
+
+            .tipo-badge {
+              background: #edf2f7;
+              color: #2d3748;
+              padding: 0.25rem 0.75rem;
+              border-radius: 4px;
+              font-size: 0.85rem;
+              font-weight: 600;
+            }
+
+            .fecha {
+              color: #718096;
+              font-size: 0.9rem;
+            }
+          }
+        }
+
+        .header-badges {
+          display: flex;
+          gap: 0.75rem;
+
+          .estado-badge {
+            padding: 0.4rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+
+            &.estado-abierta {
+              background: #fee2e2;
+              color: #7f1d1d;
+            }
+
+            &.estado-en-revisión {
+              background: #fef3c7;
+              color: #92400e;
+            }
+
+            &.estado-completada {
+              background: #d1fae5;
+              color: #065f46;
+            }
+          }
+
+          .prioridad-badge {
+            padding: 0.4rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+
+            &.prioridad-alta {
+              background: #fecaca;
+              color: #7f1d1d;
+            }
+
+            &.prioridad-media {
+              background: #fed7aa;
+              color: #7c2d12;
+            }
+
+            &.prioridad-baja {
+              background: #bbf7d0;
+              color: #065f46;
+            }
+          }
+        }
+      }
+
+      .card-body {
+        margin-bottom: 1rem;
+
+        .descripcion {
+          color: #4a5568;
+          font-size: 0.95rem;
+          line-height: 1.6;
+          margin: 0;
+        }
+      }
+
+      .card-footer {
+        display: flex;
+        justify-content: flex-end;
+
+        .btn-ver-detalle {
+          padding: 0.5rem 1.5rem;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-weight: 600;
+          transition: opacity 0.3s;
+
+          &:hover {
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: white;
+      border-radius: 8px;
+
+      .empty-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        color: #1a202c;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: #718096;
+      }
+    }
+  }
+}
+

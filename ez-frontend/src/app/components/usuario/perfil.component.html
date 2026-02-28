@@ -1,0 +1,121 @@
+<div class="perfil-container">
+  <div class="header-section">
+    <h1>Mi Perfil</h1>
+    <p class="subtitle">Gestiona tu información personal</p>
+  </div>
+
+  <div class="perfil-card">
+    <div class="card-header">
+      <h2>Datos Personales</h2>
+      <div class="card-actions">
+        <button *ngIf="!edicionMode" class="btn-editar" (click)="activarEdicion()">
+          Editar
+        </button>
+        <div *ngIf="edicionMode" class="action-buttons">
+          <button class="btn-guardar" (click)="guardarCambios()">Guardar</button>
+          <button class="btn-cancelar" (click)="cancelarEdicion()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="perfil-content">
+      <form *ngIf="edicionMode" class="perfil-form">
+        <div class="form-group">
+          <label>Nombre Completo</label>
+          <input type="text" [(ngModel)]="perfilEdit.nombre" name="nombre" />
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" [(ngModel)]="perfilEdit.email" name="email" />
+        </div>
+
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" [(ngModel)]="perfilEdit.telefono" name="telefono" />
+        </div>
+
+        <div class="form-group">
+          <label>Puesto</label>
+          <input type="text" [(ngModel)]="perfilEdit.puesto" name="puesto" />
+        </div>
+
+        <div class="form-group">
+          <label>Departamento</label>
+          <input type="text" [(ngModel)]="perfilEdit.departamento" name="departamento" />
+        </div>
+      </form>
+
+      <div *ngIf="!edicionMode" class="perfil-view">
+        <div class="info-row">
+          <span class="label">Nombre Completo</span>
+          <span class="value">{{ perfil.nombre }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Email</span>
+          <span class="value">{{ perfil.email }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Teléfono</span>
+          <span class="value">{{ perfil.telefono }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Empresa</span>
+          <span class="value">{{ perfil.empresa }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Puesto</span>
+          <span class="value">{{ perfil.puesto }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Departamento</span>
+          <span class="value">{{ perfil.departamento }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Fecha de Registro</span>
+          <span class="value">{{ perfil.fechaRegistro }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección de Seguridad -->
+  <div class="perfil-card">
+    <div class="card-header">
+      <h2>Seguridad</h2>
+    </div>
+
+    <div class="security-content">
+      <div class="security-option">
+        <div class="option-info">
+          <h4>Cambiar Contraseña</h4>
+          <p>Actualiza tu contraseña regularmente para mantener tu cuenta segura</p>
+        </div>
+        <button class="btn-accion">Cambiar</button>
+      </div>
+
+      <div class="security-option">
+        <div class="option-info">
+          <h4>Autenticación de Dos Factores</h4>
+          <p>Activa una capa adicional de seguridad en tu cuenta</p>
+        </div>
+        <button class="btn-accion">Configurar</button>
+      </div>
+
+      <div class="security-option">
+        <div class="option-info">
+          <h4>Sesiones Activas</h4>
+          <p>Gestiona tus dispositivos y sesiones conectadas</p>
+        </div>
+        <button class="btn-accion">Ver</button>
+      </div>
+    </div>
+  </div>
+</div>
+

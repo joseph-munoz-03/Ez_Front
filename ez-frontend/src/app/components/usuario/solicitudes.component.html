@@ -1,0 +1,54 @@
+<div class="solicitudes-container">
+  <div class="header-section">
+    <h1>Mis Solicitudes</h1>
+    <p class="subtitle">Visualiza y gestiona tus solicitudes</p>
+  </div>
+
+  <div class="filtros-section">
+    <button
+      *ngFor="let estado of estados"
+      [class.active]="filtroEstado === estado"
+      (click)="filtrar(estado)"
+      class="btn-filtro"
+    >
+      {{ estado }}
+    </button>
+  </div>
+
+  <div class="solicitudes-list">
+    <div class="solicitud-card" *ngFor="let solicitud of solicitudesFiltradas">
+      <div class="card-header">
+        <div class="header-info">
+          <h3>{{ solicitud.asunto }}</h3>
+          <div class="solicitud-meta">
+            <span class="tipo-badge">{{ solicitud.tipo }}</span>
+            <span class="fecha">{{ solicitud.fecha }}</span>
+          </div>
+        </div>
+        <div class="header-badges">
+          <span class="estado-badge" [class]="'estado-' + solicitud.estado.toLowerCase().replace(' ', '-')">
+            {{ solicitud.estado }}
+          </span>
+          <span class="prioridad-badge" [class]="'prioridad-' + solicitud.prioridad.toLowerCase()">
+            {{ solicitud.prioridad }}
+          </span>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <p class="descripcion">{{ solicitud.descripcion }}</p>
+      </div>
+
+      <div class="card-footer">
+        <button class="btn-ver-detalle" (click)="abrirDetalle(solicitud)">Ver Detalles</button>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="solicitudesFiltradas.length === 0">
+      <div class="empty-icon">📭</div>
+      <h3>No hay solicitudes</h3>
+      <p>No tienes solicitudes con este estado</p>
+    </div>
+  </div>
+</div>
+

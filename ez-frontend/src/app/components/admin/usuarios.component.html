@@ -1,0 +1,66 @@
+<div class="usuarios-container">
+  <div class="usuarios-header">
+    <h1>Gestión de Usuarios</h1>
+    <button class="btn-primary" (click)="crearUsuario()">+ Nuevo Usuario</button>
+  </div>
+
+  <!-- Filtros -->
+  <div class="filters-section">
+    <div class="filter-group">
+      <label>Buscar</label>
+      <input type="text" placeholder="Nombre o email..." [(ngModel)]="searchTerm" class="search-input" />
+    </div>
+
+    <div class="filter-group">
+      <label>Rol</label>
+      <select [(ngModel)]="filtroRol" class="select-input">
+        <option value="">Todos</option>
+        <option *ngFor="let rol of roles" [value]="rol">{{ rol }}</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>Estado</label>
+      <select [(ngModel)]="filtroEstado" class="select-input">
+        <option value="">Todos</option>
+        <option *ngFor="let estado of estados" [value]="estado">{{ estado | titlecase }}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Tabla de Usuarios -->
+  <div class="table-section">
+    <table class="usuarios-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Rol</th>
+          <th>Estado</th>
+          <th>Fecha Registro</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuariosFiltrados" [ngClass]="'estado-' + usuario.estado">
+          <td>{{ usuario.id }}</td>
+          <td>{{ usuario.nombre }}</td>
+          <td>{{ usuario.email }}</td>
+          <td><span class="badge" [ngClass]="'rol-' + usuario.rol.toLowerCase()">{{ usuario.rol }}</span></td>
+          <td><span class="status-badge" [ngClass]="usuario.estado">{{ usuario.estado | titlecase }}</span></td>
+          <td>{{ usuario.fechaRegistro }}</td>
+          <td class="actions">
+            <button class="btn-edit" (click)="editarUsuario(usuario)" title="Editar">✏️</button>
+            <button class="btn-delete" (click)="eliminarUsuario(usuario.id)" title="Eliminar">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="usuariosFiltrados.length === 0" class="no-results">
+      <p>No se encontraron usuarios</p>
+    </div>
+  </div>
+</div>
+
